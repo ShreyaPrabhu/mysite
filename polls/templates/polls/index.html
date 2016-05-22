@@ -1,0 +1,95 @@
+<html>
+<head>
+	<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<script>
+$(document).ready(function() {
+    $('select').material_select();
+  });
+</script>
+
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">To DO</a>
+      
+    </div>
+</nav>
+<body>
+
+
+<div class = "container">
+
+
+<div class="collection">
+<h4> SORT TASKS </h4>    
+		<li><a href="{% url 'polls:ListOnDueDate' %}" class="collection-item">LIST BASED ON DUE DATES</a>
+<li><a href="{% url 'polls:CrossedDates' %}"  class="collection-item">TASKS THAT HAVE CROSSED DUE DATE</a>
+<li><a href="{% url 'polls:ListOnDay' %}"  class="collection-item">LIST BASED ON DAY</a>
+<li><a href="{% url 'polls:ListOnWeek' %}"  class="collection-item">LIST BASED ON WEEK</a>
+<li><a href="{% url 'polls:ListOnMonth' %}"  class="collection-item">LIST BASED ON MONTH</a>
+<li><a href="{% url 'polls:ListOnYear' %}" class="collection-item">LIST BASED ON YEAR</a>
+      </div>
+            
+
+
+
+<!--<li><a href="{% url 'polls:ListOnDueDate' %}">LIST BASED ON DUE DATES</a>
+<li><a href="{% url 'polls:CrossedDates' %}">TASKS THAT HAVE CROSSED DUE DATE</a>
+<li><a href="{% url 'polls:ListOnDay' %}">LIST BASED ON DAY</a>
+<li><a href="{% url 'polls:ListOnWeek' %}">LIST BASED ON WEEK</a>
+<li><a href="{% url 'polls:ListOnMonth' %}">LIST BASED ON MONTH</a>
+<li><a href="{% url 'polls:ListOnYear' %}">LIST BASED ON YEAR</a>-->
+ {% if task_list %}   
+    {% for tasks in task_list %}
+	<div class="collection">
+		{%if tasks.task_status == '1' %}
+        <a href="{% url 'polls:TaskInfo' tasks.id %}"  class = " deep-orange lighten-4 collection-item">{{ tasks.task_name }} </a>
+		<a href="{% url 'polls:EditStatus' pk=tasks.pk%}" class = "collection-item">Edit Status </a>
+		{% endif %}
+		{%if tasks.task_status == '2' %}
+        <a href="{% url 'polls:TaskInfo' tasks.id %}"  class = " yellow lighten-3 collection-item">{{ tasks.task_name }} </a>
+		<a href="{% url 'polls:EditStatus' pk=tasks.pk %}" class = "collection-item">Edit Status </a>
+		{% endif %}
+		{%if tasks.task_status == '3' %}
+        <a href="{% url 'polls:TaskInfo' tasks.id %}"  class = "  light-green lighten-2 collection-item">{{ tasks.task_name }} </a>
+		<a href="{% url 'polls:EditStatus' pk=tasks.pk %}" class = "collection-item">Edit Status </a>
+		{% endif %}
+	</div>
+    {% endfor %}
+    
+{% else %}
+    <p>No Tasks are available.</p>
+{% endif %}
+<div class = "row">
+
+<div class = "col s3 push-s9">
+<h5>ADD A TASK</h5>
+</div>
+
+<div class = "col s2 push-s8">
+<a href = "{% url 'polls:AddTask' %}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+</div>
+
+</div>
+</div>
+</body>
+
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">ToDo App</h5>
+                <p class="grey-text text-lighten-4">An App that lets you list Tasks, set Due date and Sort the tasks to be done on the basis of present day, week, month and year!</p>
+              </div>
+             
+            </div>
+          </div>
+</footer>
+</html>

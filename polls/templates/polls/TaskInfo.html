@@ -1,0 +1,51 @@
+<html>
+<head>
+	<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+</head>
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">To DO</a>
+      
+    </div>
+</nav>
+<body>
+<div class ="container" >
+<h4>TASK DETAILS</h4>
+    <ul class="collection">
+		
+        <li class = "collection-item">  NAME : {{ task.task_name }}</li>
+		<li class = "collection-item">  CREATE DATE : {{ task.task_createDate }}</li>
+		<li class = "collection-item">  DESCRIPTION : {{ task.task_desc }}</li>
+		<li class = "collection-item">  PRIORITY : {{ task.task_priority }}</li>
+		<li class = "collection-item">  STATUS : 
+		{% if task.task_status == '1'%}
+		To Do
+		{%elif task.task_status == '2'%}
+		Doing
+		{%else%}
+		Done
+		{% endif%}
+		
+		</li>
+		<li class = "collection-item">  DUTE DATE : {{ task.task_Due }}</li>
+	</ul>
+	</div>
+</body>
+<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">ToDo App</h5>
+                <p class="grey-text text-lighten-4">An App that lets you list Tasks, set Due date and Sort the tasks to be done on the basis of present day, week, month and year!</p>
+              </div>
+             
+            </div>
+          </div>
+</footer>
+            
