@@ -54,6 +54,10 @@ application = get_wsgi_application()
 Visit your site and the web app should be live
 
 
+## License
+[MIT License](https://github.com/ShreyaPrabhu/mysite/blob/master/LICENSE.md)
+
+
 
 
 
